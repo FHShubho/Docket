@@ -8423,3 +8423,18 @@ footer.full-width-ft .ft-copyright {
 .form1 .wemail{
   text-align: right;
 }
+
+/*for blog page*/
+.user-hero{
+  height: 260px;
+  background-color: #0f2133;
+}
+
+.user-heroBlog{
+  height: 260px;
+  background-color: #0f2133;
+}
+.user-heroBlog:before{
+background-color: #0f2133;
+}
+  
