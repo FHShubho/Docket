@@ -5274,6 +5274,10 @@ ul {
 .blog-item-style-3:hover .blog-it-infor h3 a {
   color: #dcf836;
 }
+.blog-item-style-3:hover .blog-it-infor h3{
+  text-decoration:underline ;
+}
+
 .pagination {
   display: -webkit-flex;
   display: -moz-box;
@@ -5370,9 +5374,11 @@ ul {
   font-weight: 700;
   text-transform: none;
   margin-bottom: 25px;
+  float: left;
 }
 .blog-detail-ct p {
   margin-bottom: 20px;
+  float: left;
 }
 .blog-detail-ct img {
   margin-top: 30px;
@@ -5515,9 +5521,9 @@ ul {
   font-weight: 300;
   text-transform: none;
   border: 1px solid #405266;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
   height: 42px;
   background: none;
   margin-bottom: 30px;
@@ -5525,13 +5531,15 @@ ul {
 .blog-detail-ct .comment-form form input:hover,
 .blog-detail-ct .comment-form form textarea:hover {
   border: 1px solid #dcf836;
+  border-radius: 25px;
 }
 .blog-detail-ct .comment-form form textarea {
-  height: 245px;
+  height: 80px;
   padding: 15px;
+  border-radius: 25px;
 }
 .blog-detail-ct .comment-form form input.submit {
-  background-color: #dd003f;
+  background-color: #0F2133;
   padding: 0 45px;
   height: 46px;
   -webkit-border-radius: 30px;
@@ -5544,6 +5552,8 @@ ul {
   text-transform: uppercase;
   border: none;
 }
+
+
 .latestnew .morenew .more-items {
   display: flex;
   flex-direction: row;
@@ -7698,8 +7708,33 @@ p.ceb-single {
 .buster-light .blog-detail-ct p {
   color: #020d18;
 }
+
+/* Positioning the poster */
+.buster-light .blog-detail-ct img {
+  float: left;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: opx;
+}
+
+/* time under title */
+.time {
+  color: #9ca9b7;
+  float: right;
+}
+.light-text
+{
+  color: #9ca9b7;
+  opacity: 0.5;
+  font-size: 8px;
+  font-style: italic;
+}
+
 .buster-light .blog-detail-ct .time {
   color: #9ca9b7;
+  float: right;
 }
 .buster-light .blog-detail-ct .share-tag {
   border-color: #d0dae4;
