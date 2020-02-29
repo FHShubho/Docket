@@ -8301,6 +8301,10 @@ footer.full-width-ft .ft-copyright {
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
 }
+.movie-single-ct p{
+  text-align: justify;
+  /*text-justify: inter-word;*/
+}
 
 /* header for log in page */
 .headerImage {
