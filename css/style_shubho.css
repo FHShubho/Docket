@@ -5333,6 +5333,7 @@ ul {
 }
 .blog-it-infor p {
   margin-top: 15px;
+  text-align: justify;
 }
 .blog-it-infor p span {
   color: #4280bf;
@@ -8518,7 +8519,7 @@ footer.full-width-ft .ft-copyright {
 
 .ratings p{
   font-size: 24px;
-  
+  text-align: justify;
 }
 
 .ratings .description{
