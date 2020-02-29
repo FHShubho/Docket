@@ -52,13 +52,13 @@
 			    </div>
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav flex-child-menu menu-left">
-                        <li><a><h4>Home</h4></a></li>
-                        <li><a><h4>Anime</h4></a></li>
-						<li><a><h4> Movies </h4></a></li>
-						<li><a><h4> Tv-Series </h4></a></li>
-						<li><a><h4> Games </h4></a></li>
-						<li><a><h4> Books </h4></a></li>
-						<li><a><h4> Blogs </h4></a></li>
+                       
+                        <li><a href="Anime.html"><h4>Anime</h4></a></li>
+						<li><a href="movies.html"><h4> Movies </h4></a></li>
+						<li><a href="tvseries.html"><h4> Tv-Series </h4></a></li>
+						<li><a href="games.html"><h4> Games </h4></a></li>
+						<li><a href="books.html"><h4> Books </h4></a></li>
+						<li><a href="blogList.html"><h4> Blogs </h4></a></li>
                     </ul>
                 </div>
 
@@ -74,7 +74,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="hero-ct">
+				<div class="hero-ct" style="text-align:center;">
 					<h1>My profile</h1>
 					
 				</div>
@@ -89,8 +89,20 @@
 			<div class="col-md-3 col-sm-12 col-xs-12">
 				<div class="user-information">
 					<div class="user-img">
-						<a href="#"><img src="images/uploads/user-img.png" alt=""><br></a>
-						<a href="#" class="redbtn">Change avatar</a>
+						<form action="/action_page.php">
+							<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+							<p><img id="output" width="200" /></p>
+							<h3><label for="file" class="redbtn">Change Avatar</label></h3>
+							
+
+	 <script>
+	var loadFile = function(event) {
+	  var image = document.getElementById('output');
+	 image.src = URL.createObjectURL(event.target.files[0]);
+	 };
+	  </script>
+					   
+						</form>
 					</div>
 					
 				</div>

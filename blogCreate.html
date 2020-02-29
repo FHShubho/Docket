@@ -50,19 +50,19 @@
 							<span></span>
 						</div>
 				    </div>
-				    <a href="index_light.html"><img class="logo" src="images/logo_1.png" alt="" width="119" height="58"></a>
+				    <a href="UserProfile.html"><img class="logo" src="images/logo_1.png" alt="" width="119" height="58"></a>
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav flex-child-menu menu-left">
 						
-                        <li><a><h4>Home</h4></a></li>
-                        <li><a><h4>Anime</h4></a></li>
-						<li><a><h4> Movies </h4></a></li>
-						<li><a><h4> Tv-Series </h4></a></li>
-						<li><a><h4> Games </h4></a></li>
-						<li><a><h4> Books </h4></a></li>
-						<li><a><h4> Blogs </h4></a></li>
+                      
+                        <li><a href="Anime.html"><h4>Anime</h4></a></li>
+						<li><a href="movie.html"><h4> Movies </h4></a></li>
+						<li><a href="tvseries.html"><h4> Tv-Series </h4></a></li>
+						<li><a href="games.html"><h4> Games </h4></a></li>
+						<li><a href=books,html><h4> Books </h4></a></li>
+						<li><a href="blogList.html"><h4> Blogs </h4></a></li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
 						<li class="dropdown first">
@@ -108,8 +108,9 @@
                         <div class="user-img">
                             <form action="/action_page.php">
                                 <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                                <h3><label for="file" style="cursor: pointer;">Upload Image</label></h3>
-                                <p><img id="output" width="200" /></p>
+								<p><img id="output" width="200" /></p>
+								<h3><label for="file" class="redbtn">Upload Image</label></h3>
+                                
 
          <script>
         var loadFile = function(event) {
@@ -145,7 +146,7 @@
                             
                             <div class="row">
                                 <div class="col-md-2 form-it">
-                                        <input class="submit" type="submit" value="Post">
+                                        <input class="submit" type="submit"  onclick="window.location.href='friendProfile.html'"  value="Post">
                                     </div>
                                     
                                 </div>
