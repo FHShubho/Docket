@@ -46,7 +46,7 @@ $shout= new Shout();
 					</ul>
 
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-                        <li><a href="UserProfile.html"><img class="logo" src="images/search.png" alt="" width="50" height="50"></a></li>
+                        <li><a href="Search.html"><img class="logo" src="images/search.png" alt="" width="50" height="50"></a></li>
                         <div class="" title="Go to Profile">
                         <li><a href="UserProfile.html"><img class="logo" src="images/profile.png" alt="" width="78" height=""></a></li>
                         </div>
