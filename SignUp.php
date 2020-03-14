@@ -1,15 +1,19 @@
 <?php
-$con=mysqli_connect("localhost","root","","docket");
+$con=mysqli_connect("localhost","digibd_docket","docket","digibd_docket");
+//$con=mysqli_connect("localhost","root","","docket");
 if($con===false)
 {
   echo '<script type= "text/javascript"> alert ("Database Could not connect")</script>';
 }
 ?>
 <!DOCTYPE html>
+<html lang="en" class="no-js">
 
 <head>
-	<title>Sign Up for Docket</title>
-    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+  <title>Sign Up for Docket</title>
+  <link rel='icon' href='favicon.png' type='image/x-icon'/>
+  <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+  <meta name=viewport content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/plugins.css">
 	<link rel="stylesheet" href="css/style_sana.css">
 	</head>
@@ -17,7 +21,7 @@ if($con===false)
 <body>
 <div class="loginContainer">
 	<div class="headerImage">
-		<a href="SignIn.html"><img class="logo" src="images/poster.png" alt="" ></a>
+		<a href="SignIn.php"><img class="logo" src="images/poster.png" alt="" ></a>
 <div class="form1">
     <div class="login-content">
         <h3>Sign Up</h3>
@@ -89,10 +93,20 @@ if(isset($_POST['button'])){
 
       if ($_POST['pass'] == $_POST['repass']) {
 
-        $query = "INSERT INTO UserInfo (userName,email,pass) values ('".$_POST['username']."','".$_POST['email']."','".md5($_POST['pass'])."')"; 
+        $token=md5($email);
+        $query = "INSERT INTO UserInfo (userName,email,pass,verified,token) values ('".$_POST['username']."','".$_POST['email']."','".md5($_POST['pass'])."','no','".$token."')"; 
       
         if(mysqli_query($con,$query)){
-          echo '<script type= "text/javascript"> alert ("signup completed")</script>';
+          
+          $from = 'docket@digitotalbd.com';
+          $to = $email;      
+          $subject = 'Complete your Docket Sign Up';
+          $link = "https://digitotalbd.com/docket299/verify.php?token=$token";
+          $message = 'Follow this link - '.$link;
+          $headers = 'From:'.$from;
+          mail($to,$subject,$message,$headers);
+
+          echo '<script type= "text/javascript"> alert ("signup completed.Please Verify Your Email.")</script>';
           echo "<script> location.href='SignIn.php'; </script>";
         }
         else{
