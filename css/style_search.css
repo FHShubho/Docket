@@ -74,6 +74,20 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+ /* edit section start*/
+.flex-wrap-movielist.user-fav-list {
+    padding: 20px;
+}
+
+.mv-item-infor {
+    height: 100px;
+    width: 450px;
+    margin: fixed;
+}
+/* edit section end*/
+
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -6425,6 +6439,7 @@ ul {
   width: 25%;
   display: block;
   margin: 0 auto;
+  cursor: pointer;
 }
 .form-style-1 .group-ip {
   display: -webkit-flex;
@@ -8454,4 +8469,14 @@ footer.full-width-ft .ft-copyright {
 
 .search__container img{
   margin-bottom: 50px;
+}
+
+.sectionTitle{
+  height: 30px;
+  width: 900px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  margin-top: 25px;
+  margin-right: 900px;
+  margin: fixed;
 }
