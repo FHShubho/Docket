@@ -1,27 +1,24 @@
 
-<!DOCTYPE html>
-
-<html lang="en" class="no-js">
 
 
 <head>
 
-	<title>Docket</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="">
-	<link rel="profile" href="#">
+<title>Docket</title>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<link rel="profile" href="#">
 
-  
-    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
-	
-	<meta name=viewport content="width=device-width, initial-scale=1">
-	<meta name="format-detection" content="telephone-no">
 
-	
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="css/style_subir.css">
+<link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+
+<meta name=viewport content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone-no">
+
+
+<link rel="stylesheet" href="css/plugins.css">
+<link rel="stylesheet" href="css/style_subir.css">
 
 </head>
 <body>
@@ -129,38 +126,39 @@
 				
 				
 				</div>
+                
+                <form action="includes/signup.inc.php" method="POST">
                 <div class="col-md-9 col-sm-12 col-xs-12">
                    <div class="form-style-1 user-pro" action="#">
                         <form action="#" class="user">
-                
-                            <div class="row form-it">
+
+                <div class="row form-it">
                             
-                                    <label>Title</label>
-                                    <input type="text" style="height:50px;width:90%" placeholder="Give a title to your Review">
-                                
-                                
-                            </div>
-                           
-                            
-                            <div class="row form-it">
+                            <label>Title</label>
+                            <input type="text" name="title" style="height:50px;width:90%" placeholder="Give a title to your Review">
+                        
+                        
+                 </div>
+                <div class="row form-it">
                                
                                     <label>Description</label>
-                                    <textarea style="overflow:auto;resize:none;height:300px;width:90%" placeholder="Enter description" ></textarea>
+                                    <textarea style="overflow:auto;resize:none;height:300px;width:90%" name="blog" placeholder="Enter description" ></textarea>
                                 
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-2 form-it">
-                                        <input class="submit" type="submit"  onclick="window.location.href='friendProfile.html'"  value="Post">
-                                </div>
+               </div>
+
+
+                 <div class="row">
+                        <div class="col-md-2 form-it">
+                                        <input class="submit" type="submit"  onclick="window.location.href='friendProfile.html'" name="submit" value="Post">
+                        </div>
                                     
-							</div>
-								
-                            </div>
-                        </form>
-                        
-                    </div>
                 </div>
+            </div>
+            </form>
+            </div>
+            </div>
+
+</form> 
             </div>
         </div>
     </div>
@@ -171,5 +169,8 @@
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>
 <script src="js/custom.js"></script>
-</body>
-</html>
+
+
+
+    </body>
+    </html>
