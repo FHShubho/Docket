@@ -113,7 +113,7 @@
                         <div class="user-info">
 
                             <div class="user-img">
-                                <form action="includes/signup.inc.php" enctype="multipart/form-data" method="POST">
+                                <form action="includes/blog.inc.php" enctype="multipart/form-data" method="POST">
                                     <p><input type="file" accept="image/*" name="img_url" id="file"
                                             onchange="loadFile(event)" style="display: none;"></p>
                                     <p><img id="output" width="200" /></p>
