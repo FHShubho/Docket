@@ -1,6 +1,7 @@
 <?php
 include_once "Class/class.php";
 $shout= new Shout();
+$blog= new blog();
 
  ?>
  <!DOCTYPE html>
@@ -37,16 +38,16 @@ $shout= new Shout();
 
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav flex-child-menu menu-left">
-						<li><a href="Anime.html"><h4>Anime</h4></a></li>
-						<li><a href="movie.html"><h4> Movies </h4></a></li>
-						<li><a href="TvSeries.html"><h4> Tv-Series </h4></a></li>
-						<li><a href="games.html"><h4> Games </h4></a></li>
-						<li><a href="Books.html"><h4> Books </h4></a></li>
-						<li><a href="blogList.html"><h4>Blogs </h4></a></li>
+						<li><a><h4>Anime</h4></a></li>
+						<li><a><h4> Movies </h4></a></li>
+						<li><a><h4> Tv-Series </h4></a></li>
+						<li><a><h4> Games </h4></a></li>
+						<li><a><h4> Books </h4></a></li>
+						<li><a><h4> Blogs </h4></a></li>
 					</ul>
 
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-                        <li><a href="Search.html"><img class="logo" src="images/search.png" alt="" width="50" height="50"></a></li>
+                        <li><a href="Sear.html"><img class="logo" src="images/search.png" alt="" width="50" height="50"></a></li>
                         <div class="" title="Go to Profile">
                         <li><a href="UserProfile.html"><img class="logo" src="images/profile.png" alt="" width="78" height=""></a></li>
                         </div>
@@ -60,70 +61,38 @@ $shout= new Shout();
 
 	</div>
   <div class="blog_view">
+    <div class="b_view">
 
 
-		<div class="col-xs-7 col-sm-6 col-lg-8">
-			<div class="blog-item-style-1 blog-item-style-3">
-							<img src="images/uploads/bloglist-it1.jpg" alt="">
-							<div class="blog-it-infor">
-								<h3><a href="blogdetail_light.html">Godzilla: King Of The Monsters Adds O’Shea Jackson Jr</a></h3>
-								<span class="time">27 Mar 2017</span>
-								<p>Africa's burgeoning animation scene got a boost this week with the announcement of an ambitious new partnership that will pair rising talents from across the continent ...</p>
-							</div>
-						</div>
-						<div class="blog-item-style-1 blog-item-style-3">
-							<img src="images/uploads/bloglist-it2.jpg" alt="">
-							<div class="blog-it-infor">
-								<h3><a href="blogdetail_light.html">Magnolia Nabs ‘Lucky’ Starring Harry Dean Stanton</a></h3>
-								<span class="time">27 Mar 2017</span>
-								<p>Magnolia Pictures has acquired U.S. and international rights to the comedic drama Lucky John Carroll Lynch’s directorial debut. Lynch is an in-demand character actor who ...</p>
-							</div>
-						</div>
-			<div class="blog-item-style-1 blog-item-style-3">
-							<img src="images/uploads/bloglist-it3.jpg" alt="">
-							<div class="blog-it-infor">
-								<h3><a href="blogdetail_light.html">‘Going in Style’ Tops ‘Smurfs: The Lost Village’ at Thursday Box Office</a></h3>
-								<span class="time">27 Mar 2017</span>
-								<p>New Line’s remake of “Going in Style” launched with a moderate $600,000 on Thursday night, while Sony’s animated “Smurfs: The Lost Village” debuted with $375,000 ...</p>
-							</div>
-						</div>
-						<div class="blog-item-style-1 blog-item-style-3">
-							<img src="images/uploads/bloglist-it4.jpg" alt="">
-							<div class="blog-it-infor">
-								<h3><a href="blogdetail_light.html">India’s National Film Awards: ‘Kaasav’ Wins Best Picture</a></h3>
-								<span class="time">27 Mar 2017</span>
-								<p>Although it sporadically errs on the side of sentimentality and simplification, "The Case for Christ" sustains interest, and even generates mild suspense ...</p>
-							</div>
-						</div>
-						<div class="blog-item-style-1 blog-item-style-3">
-							<img src="images/uploads/bloglist-it5.jpg" alt="">
-							<div class="blog-it-infor">
-								<h3><a href="blogdetail_light.html">‘Kong: Skull Island’ Tops $500 Million at Worldwide Box Office</a></h3>
-								<span class="time">27 Mar 2017</span>
-								<p>King Kong is still a box office giant. “Kong: Skull Island” has crossed the $500 million mark at the worldwide box office. It’s the third 2017 title to hit the milestone after Disney’s ...</p>
-							</div>
-						</div>
-						<div class="blog-item-style-1 blog-item-style-3">
-							<img src="images/uploads/bloglist-it6.jpg" alt="">
-							<div class="blog-it-infor">
-								<h3><a href="blogdetail_light.html">Film Review: ‘Aftermath’</a></h3>
-								<span class="time">27 Mar 2017</span>
-								<p>"Aftermath" is a plane crash movie without a plane crash. Instead, the closest we get is a scene set in the control tower, where a computer screen shows two ...</p>
-							</div>
-						</div>
-						<ul class="pagination">
-							<li class="icon-prev"><a href="#"><i class="ion-ios-arrow-left"></i></a></li>
-							<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">...</a></li>
-				<li><a href="#">21</a></li>
-				<li><a href="#">22</a></li>
-				<li class="icon-next"><a href="#"><i class="ion-ios-arrow-right"></i></a></li>
-						</ul>
+<div class="col-xs-7 col-sm-8 col-lg-8">
+
+  <?php
+          $showData= $blog->showAllData();
+          if ($showData) {
+            while($data = $showData->fetch_assoc()){ ?>
+              	<div class="blog-item-style-1 blog-item-style-3">
+          							<img  src="images1\uploads\mv1.jpg">
+          							<div class="blog-it-infor">
+          								<h3><a href="blogdetail_light.html"> <?php echo $data['title']; ?></a></h3>
+
+                          <span class="time"><h5><b> <?php echo $data['name'];?> </b> </h5> </span>
+                          <br>
+          								<span class="time"> <?php echo $data['date'];?> </span>
+          								<p><?php echo $data['content'];?></p>
+          							</div>
+          						</div>
+                <?php
+
+            }
+          }
+         ?>
+
+
+
+
 		</div>
 	</div>
+</div>
 	<div class="wrapper clr">
 	      <header class="headsec clr">
 
@@ -168,7 +137,7 @@ $shout= new Shout();
 
 	                  </tr>
 	                  <tr>
-	                   <td></td>
+
 	                    <td><input type="submit" value="Shout IT"></td>
 	                  </tr>
 	                </table>
