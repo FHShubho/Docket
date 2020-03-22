@@ -5178,6 +5178,8 @@ ul {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin-right: 800px;
+
 }
 .blog-item-style-1 img {
   margin-right: 30px;
@@ -5191,6 +5193,7 @@ ul {
     display: flex;
     flex-direction: column;
     width: auto;
+      margin-right: 800px;
   }
   .blog-item-style-1 img {
     margin-right: 0;
@@ -8466,7 +8469,8 @@ footer.full-width-ft .ft-copyright {
   display:block;
 width: auto;
   margin-top: 50px;
-  border: 1px solid black;
+
+
 }
 .wrapper{
 width: 500px;
@@ -8480,7 +8484,7 @@ overflow: hidden;
 }
 .headsec{
   width: 500px;
-  background:#ddd;
+  background:#0f2133;
   padding: 10px;
   text-align: center;
 
@@ -8489,16 +8493,17 @@ overflow: hidden;
   font-size: 35px;
   width: 400px;
   overflow: hidden;
+  color:white;
 }
 .content{
-  border: 4px solid #ddd;
+  border: 4px solid #0f2133;
   min-height: 500px;
 
 
 
 }
 .box{
-  border:5px solid #999 ;
+  border:5px solid #0f2133 ;
   padding: 20px;
   width: 420px;
   height: 480px;
@@ -8513,7 +8518,7 @@ overflow: hidden;
 }
 .box ul li{
 display: block;
-border-bottom: 1px dashed #ddd;
+border-bottom: 1px dashed #0f2133;
 margin-bottom: 5px;
 padding-bottom: 5px;
 }
@@ -8535,14 +8540,17 @@ padding-bottom: 0px;
   padding: 5px;
   width: 500px;
   margin-bottom: 10px;
-  
+
 }
  .shoutform input [type="submit"]{
   background: #666
-  float:left;
+  align:center;
   border:1 px solid #444;
   color: #fff;
   cursor: pointer;
   font-size: 25px;
   padding: 5px 20px;
+}
+.b_view{
+  width: 1300px;
 }
