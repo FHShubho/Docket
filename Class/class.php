@@ -1,4 +1,5 @@
 <?php
+
 include_once  "./lib/Database.php";
 
 Class Shout{
@@ -19,7 +20,23 @@ Class Shout{
 
     $query= "INSERT INTO shout (name, body, time ) VALUES('$name', '$body','$time')";
     $this->db->insert($query);
-    header("Location:shoutbox.php");
+
+  //  header("Location:shoutbox.php");
+  }
+
+
+}
+Class blog{
+  private $db;
+  public function __construct(){
+    $this->db= new Database();
+  }
+  public function showAllData(){
+    $query = "SELECT * FROM review_blog";
+    $result = $this->db->select($query);
+    return $result;
+
+
   }
 }
-?>
+  ?>
