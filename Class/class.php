@@ -1,7 +1,7 @@
 <?php
 
 include_once  "./lib/Database.php";
-include_once  "./lib/Database2.php";
+
 
 Class Shout{
   private $db;
@@ -46,7 +46,7 @@ Class moviewatching{
     $this->db= new Database();
   }
   public function showAllData(){
-    $query = "SELECT * FROM watching";
+    $query = "SELECT * FROM moviewatching";
     $result = $this->db->select($query);
     return $result;
 
@@ -58,7 +58,7 @@ Class moviewatching{
     $this->db= new Database();
   }
   public function showAllData(){
-    $query = "SELECT * FROM planning";
+    $query = "SELECT * FROM movieplanning";
     $result = $this->db->select($query);
     return $result;
 
@@ -70,7 +70,44 @@ Class moviewatching{
     $this->db= new Database();
   }
   public function showAllData(){
-    $query = "SELECT * FROM finished";
+    $query = "SELECT * FROM moviefinished";
+    $result = $this->db->select($query);
+    return $result;
+
+
+  }
+}
+Class gameswatching{
+  private $db;
+  public function __construct(){
+    $this->db= new Database();
+  }
+  public function showAllData(){
+    $query = "SELECT * FROM gameswatching";
+    $result = $this->db->select($query);
+    return $result;
+
+
+  }
+}Class gamesplanned{
+  private $db;
+  public function __construct(){
+    $this->db= new Database();
+  }
+  public function showAllData(){
+    $query = "SELECT * FROM gamesplanning";
+    $result = $this->db->select($query);
+    return $result;
+
+
+  }
+}Class gamesfinished{
+  private $db;
+  public function __construct(){
+    $this->db= new Database();
+  }
+  public function showAllData(){
+    $query = "SELECT * FROM gamesfinished";
     $result = $this->db->select($query);
     return $result;
 
