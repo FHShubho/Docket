@@ -89,7 +89,7 @@ $moviefinished= new moviefinished();
 			
 			
 		<div class="movie-item-style-2 movie-item-style-1">
-			<img src="images/uploads/mv1.jpg" alt="">
+			<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $data['images'] ).'"/>';?>
 			<div class="mv-item-infor">
 				<h6><a href="#"><?php echo $data['name'];?></a></h6>
 				<p class="rate"><i class="ion-android-star"></i><span><?php echo $data['ratings'];?></span> /10</p>	
@@ -108,13 +108,13 @@ $moviefinished= new moviefinished();
 			
 		<div class="playlist_container">
 		<?php
-		$showData= $movieplanned->showAllData();
+			$showData= $movieplanned->showAllData();
           if ($showData) {
             while($data = $showData->fetch_assoc()){ ?>	
 			
 			
 		<div class="movie-item-style-2 movie-item-style-1">
-			<img src="<?php echo $data['name'];?>" alt="">
+			<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $data['images'] ).'"/>';?>
 			<div class="mv-item-infor">
 				<h6><a href="#"><?php echo $data['name'];?></a></h6>
 				<p class="rate"><i class="ion-android-star"></i><span><?php echo $data['ratings'];?></span> /10</p>	
@@ -139,7 +139,7 @@ $moviefinished= new moviefinished();
 			
 			
 		<div class="movie-item-style-2 movie-item-style-1">
-			<img src="$images" alt="">
+		<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $data['images'] ).'"/>';?>
 			<div class="mv-item-infor">
 				<h6><a href="#"><?php echo $data['name'];?></a></h6>
 				<p class="rate"><i class="ion-android-star"></i><span><?php echo $data['ratings'];?></span> /10</p>	
@@ -157,10 +157,8 @@ $moviefinished= new moviefinished();
 </div>
 
 
-</div>
-
 <script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
+/<script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>
 <script src="js/custom.js"></script>
 </body>
