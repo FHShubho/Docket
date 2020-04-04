@@ -33,7 +33,7 @@
     $tokenMetadata->validateExpiration();
 
 	if (! $accessToken->isLongLived()) {
-        // Exchanges a short-lived access token for a long-lived one
+        
         try {
           $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
         } catch (Facebook\Exceptions\FacebookSDKException $e) {
@@ -45,19 +45,15 @@
         var_dump($accessToken->getValue());
     }
 
-    //$response = $FB->get("/me?fields=id, first_name, last_name, email, picture?redirect=false&width=300&height=300", $accessToken);
+    
     $response = $FB->get("/me?fields=id, first_name, last_name, email,friends, picture.type(large)", $accessToken);
-    //$response = $FB->get("/me?fields=id, first_name, last_name, email, picture", $accessToken);
-    //$requestPicture = $FB->get('/me/picture?redirect=false&width=300&height=300', $accessToken);
-    //$requestPicture = $FB->get('/me/picture?redirect=false&width=300&height=300', $accessToken);
-    //$profilePicture= $requestPicture->getGraphNode();
+    
 	  $userData = $response->getGraphNode()->asArray();
     $_SESSION['userData'] = $userData;
-    //$_SESSION['profilePicture'] = $profilePicture;
-    // Returns a `FacebookFacebookResponse` object
+    
     $_SESSION['access_token'] = (string) $accessToken;
     
-  //header('Location: index.php');
+  
   header('Location: redirect.php');
 	exit();
 ?>
