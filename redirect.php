@@ -1,9 +1,9 @@
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <?php
 include('updateScript/createUser.php');
-//require_once "fb_config.php";
+
 $con=mysqli_connect("localhost","digibd_docket","docket","digibd_docket");
-//$con=mysqli_connect("localhost","root","","docket");
+
 if($con===false)
 {
   echo '<script type= "text/javascript"> alert ("Database Could not connect")</script>';
@@ -17,7 +17,7 @@ $name = $_SESSION['userData']['first_name'];
 $name .= " ";
 $name .= $_SESSION['userData']['last_name'];
 $picture = $_SESSION['userData']['picture']['url'];
-//echo $picture;
+
 
 $sql ="SELECT * FROM UserInfo WHERE fb_id = '$id' ";
 
@@ -53,7 +53,7 @@ else {
     
     if (mysqli_num_rows ($query_run) > 0) {
                 
-      //$query = "UPDATE UserInfo fb_id = '".$id."', verified = 'yes',pictureURL = '".$picture."' WHERE email = '$email' ";
+      
       $query = "UPDATE UserInfo SET fb_id = '$id', verified = 'yes', pictureURL = '$picture' WHERE email = '$email' "; 
       
       if(mysqli_query($con,$query)){
@@ -78,7 +78,7 @@ else {
         {
           echo '<script type="text/javascript"> alert ("Login Error")</script>';
         } 
-        //echo "<script> location.href='UserProfile.php'; </script>";
+        
       }
       else{
         echo '<script type= "text/javascript"> alert ("Error 1, try again")</script>';
@@ -115,7 +115,7 @@ else {
       }
     }
 }
-//echo $userID;
+
 ?>
 
     
