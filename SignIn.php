@@ -1,6 +1,6 @@
 <?php
 $con=mysqli_connect("localhost","digibd_docket","docket","digibd_docket");
-//$con=mysqli_connect("localhost","root","","docket");
+
 if($con===false)
 {
  echo '<script type= "text/javascript"> alert("Database could not connect")</script>';
@@ -11,7 +11,7 @@ session_start();
 require_once 'fb_config.php';
 
   $redirectURL = 'https://digitotalbd.com/docket299/fb-callback.php';
-  //$redirectURL = 'fb-callback.php';
+  
 	$permissions = ['email'];
 	$loginURL = $helper->getLoginUrl($redirectURL, $permissions);
 ?>
@@ -88,8 +88,7 @@ if(isset($_POST['button']))
   if (mysqli_num_rows ($query_run) > 0)
   {
 
-    //session_start();
-    //$_SESSION['email'] = $email;
+    
 
     $sql ="SELECT * FROM UserInfo WHERE verified = 'yes' AND email='$email' ";
     $query_run = mysqli_query($con,$sql);
@@ -107,7 +106,7 @@ if(isset($_POST['button']))
         $userID = $result['uniqueId'];
         $loggedIn = 1; 
         
-        //$_SESSION['email'] = $email;
+        
         $_SESSION['userID'] = $userID;
         $_SESSION['loggedIn'] = $loggedIn;
         echo "<script> location.href='UserProfile.php'; </script>";
