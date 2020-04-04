@@ -5,7 +5,15 @@ if($con===false)
 {
  echo '<script type= "text/javascript"> alert("Database could not connect")</script>';
 }
+session_start();
 
+
+require_once 'fb_config.php';
+
+  $redirectURL = 'https://digitotalbd.com/docket299/fb-callback.php';
+  //$redirectURL = 'fb-callback.php';
+	$permissions = ['email'];
+	$loginURL = $helper->getLoginUrl($redirectURL, $permissions);
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -48,7 +56,7 @@ if($con===false)
         <div class="row">
         	<p><b>Or with...</b></p>
             <div class="social-btn-2">
-            	<a class="fb" href="#"><i class="ion-social-facebook"></i>Facebook</a>
+            	<a class="fb" href="<?php echo $loginURL ?>"><i class="ion-social-facebook"></i>Facebook</a>
 				<a class="tw" href="#"><i class="ion-social-google"></i>Google</a>
             </div>
 		</div>
@@ -80,15 +88,34 @@ if(isset($_POST['button']))
   if (mysqli_num_rows ($query_run) > 0)
   {
 
-    session_start();
-    $_SESSION['email'] = $email;
+    //session_start();
+    //$_SESSION['email'] = $email;
 
     $sql ="SELECT * FROM UserInfo WHERE verified = 'yes' AND email='$email' ";
     $query_run = mysqli_query($con,$sql);
 
     if (mysqli_num_rows($query_run) > 0)
     {
-      echo "<script> location.href='UserProfile.html'; </script>";
+	
+      $sql1 ="SELECT * FROM UserInfo WHERE email = '$email' ";
+      $query_run = mysqli_query($con,$sql1);
+      
+      if (mysqli_num_rows($query_run) > 0) 
+      {		  
+        $result= mysqli_fetch_array($query_run);
+        
+        $userID = $result['uniqueId'];
+        $loggedIn = 1; 
+        
+        //$_SESSION['email'] = $email;
+        $_SESSION['userID'] = $userID;
+        $_SESSION['loggedIn'] = $loggedIn;
+        echo "<script> location.href='UserProfile.php'; </script>";
+      }
+      else
+      {
+        echo '<script type="text/javascript"> alert ("Login Error")</script>';
+      }
     }
     else
     {
@@ -100,6 +127,5 @@ if(isset($_POST['button']))
   }
 
 }
-
 ?>
 </html>
