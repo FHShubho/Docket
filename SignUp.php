@@ -1,6 +1,6 @@
 <?php
 $con=mysqli_connect("localhost","digibd_docket","docket","digibd_docket");
-//$con=mysqli_connect("localhost","root","","docket");
+
 if($con===false)
 {
   echo '<script type= "text/javascript"> alert ("Database Could not connect")</script>';
