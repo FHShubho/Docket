@@ -1,4 +1,3 @@
-<!-- Fahimul Hoque Shubho -->
 <?php
     include_once('simple_html_dom.php');
 ?>
@@ -96,7 +95,97 @@
             window.history.replaceState( null, null, window.location.href );
             }
             </script>
-            <!-- anime section -->
+            <!-- game section -->
+						
+						  
+			
+			
+               <?php
+			   if(isset($_POST['button']) && !empty($_POST['this']))
+                    {
+						
+                        $s=$_POST['this'];
+						
+						$temp1="https://api-v3.igdb.com/games?search=";
+						$temp2 = urlencode($s);
+						$temp1 .= $temp2;
+						$temp1 .= "&fields=cover.url,name,rating,game_modes.slug";
+
+						$curl = curl_init();
+
+						curl_setopt_array($curl, array(
+
+						  CURLOPT_URL => $temp1,
+						  CURLOPT_RETURNTRANSFER => true,
+						  CURLOPT_ENCODING => "",
+						  CURLOPT_MAXREDIRS => 10,
+						  CURLOPT_TIMEOUT => 30,
+						  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+						  CURLOPT_CUSTOMREQUEST => "GET",
+						  CURLOPT_POSTFIELDS => "",
+						  CURLOPT_COOKIE => "__cfduid=d6aa6f76572874d2cffd14a1ce2b8fb7b1586267658",
+						  CURLOPT_HTTPHEADER => array(
+							"accept: application/json",
+							"user-key: 13dff6e72667329afab6ecb9b5c49ae6"
+						  ),
+						));
+						$response=array();
+						$response = curl_exec($curl);
+						$err = curl_error($curl);
+
+						curl_close($curl);
+
+						if ($err) {
+						  echo "cURL Error #:" . $err;
+						} else {
+							$result =json_decode($response,true);
+							 
+							// echo "<pre>";
+							 //print_r ($result);
+							 //echo "<pre>"; 
+						
+						}
+					
+						
+					
+						?>
+				<div class="sectionTitle">
+                    <h6><a><span>Games</span></a></h6>
+                    <svg height="5" width="900">
+                        <line x1="0" y1="0" x2="250" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:1"/>
+                    </svg>
+                </div> 
+				
+				
+				<?php	foreach($result as $data){?>
+			
+			<?php $tmp4=$data['cover']['url'];
+					$tmp5 = str_replace('thumb', 'cover_small', $tmp4);
+						
+					?>
+		       <div class="movie-item-style-2">    
+		   <img src="<?php echo $tmp5; ?>" >
+					<div class="game-item-infor">
+			<h6><a href="#"><?php echo $data['name'];?></a></h6>
+			<?php if(!isset ($data['game_modes']['1']['slug'])){?>
+			<p class="rate"></i><span><?php echo "<b>Game mode:</b> ".$data['game_modes']['0']['slug']; ?></span></p>  
+			<?php } else {?>
+				
+				<p class="rate"></i><span><?php echo "<b>Game mode:</b> " .$data['game_modes']['0']['slug'].", ".$data['game_modes']['1']['slug'];?></span></p>  <?php }?>
+				
+						</div>
+	</div>
+
+		<?php
+			}
+		?>
+	
+		<?php 	} ?>
+		
+				  </div>
+				  
+				   <!-- anime section -->
+				  
                 <?php
                     if(isset($_POST['button']) && !empty($_POST['this']))
                     {
@@ -336,6 +425,7 @@
                     unset($html);
                 }
                 ?>
+				
 
 
                 </div>
