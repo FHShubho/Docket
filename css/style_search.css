@@ -8480,3 +8480,12 @@ footer.full-width-ft .ft-copyright {
   margin-right: 900px;
   margin: fixed;
 }
+
+.game-item-infor{
+	 height: 90px;
+    width: 450px;
+    margin: fixed;
+}
+.game-item-infor h6{
+	margin-bottom:10px;
+}
