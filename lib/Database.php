@@ -65,6 +65,7 @@ public function insert($query){
  } else {
    return false;
   }
+  
  }
 
 }
