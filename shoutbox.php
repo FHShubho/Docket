@@ -1,7 +1,9 @@
 <?php
 include_once "Class/class.php";
+include_once "lib/Database.php";
 $shout= new Shout();
 $blog= new blog();
+$db= new Database();
 
  ?>
  <!DOCTYPE html>
@@ -10,8 +12,10 @@ $blog= new blog();
 	<title>Landing page</title>
 
     <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/plugins.css">
 	<link rel="stylesheet" href="css/style_Moktadir_khan.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -64,20 +68,37 @@ $blog= new blog();
     <div class="b_view">
 
 
+
+	<?php
+  $per_page= 3;
+	if(isset($_GET["page"])){
+		$page=$_GET ["page"];
+  }else{
+    $page=1;
+
+  }
+	$start_form =($page-1)* $per_page;
+
+?>
+
+
+
+
 <div class="col-xs-7 col-sm-8 col-lg-8">
 
   <?php
-          $showData= $blog->showAllData();
-          if ($showData) {
-            while($data = $showData->fetch_assoc()){ ?>
+  $query = "SELECT * FROM review_blog LIMIT $start_form, $per_page";
+  $post =$db->select($query);
+  if($post){
+    while ($data=$post->fetch_assoc()) {
+ ?>
               	<div class="blog-item-style-1 blog-item-style-3">
-          							<img  src="images1\uploads\mv1.jpg">
+          										<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $data['picture'] ).'"/>';?>
           							<div class="blog-it-infor">
           								<h3><a href="blogdetail_light.html"> <?php echo $data['title']; ?></a></h3>
-
-                          <span class="time"><h5><b> <?php echo $data['name'];?> </b> </h5> </span>
-                          <br>
-          								<span class="time"> <?php echo $data['date'];?> </span>
+                             <span><h5><b> <?php echo $data['name'];?> </b> </h5> </span>
+                             <br>
+          								<span> <?php echo $data['date'];?> </span>
           								<p><?php echo $data['content'];?></p>
           							</div>
           						</div>
@@ -87,6 +108,23 @@ $blog= new blog();
           }
          ?>
 
+		 <?php
+     	$showData= $blog->showAllData();
+		$total_rows=mysqli_num_rows($showData);
+        $total_pages=ceil($total_rows/$per_page);?>
+
+			<?php
+ if($total_pages>1){?>
+
+<?php
+ echo "<span class='pagination'><a href='shoutbox.php?page=1'>".'1'."</a>";
+
+ for($i=2;$i<= $total_pages;$i++){
+   echo "<a  href='shoutbox.php?page=".$i."'>".$i."</a></span>";
+ };
+
+    };
+ ?>
 
 
 
@@ -124,7 +162,7 @@ $blog= new blog();
 	         ?>
 	        <div class="shoutform clr">
 
-	          <form class="shouty"  action="" method="post">
+	          <form class="shouty"  action="shoutbox.php" method="post">
 	                <table>
 	                  <tr>
 	                    <td>Name:</td>
