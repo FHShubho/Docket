@@ -158,7 +158,7 @@
 				
 				
 				<?php	foreach($result as $data){?>
-			
+			<?php if(isset ($data['cover'])&& isset ($data['game_modes'])){?>
 			<?php $tmp4=$data['cover']['url'];
 					$tmp5 = str_replace('thumb', 'cover_small', $tmp4);
 						
@@ -167,12 +167,14 @@
 		   <img src="<?php echo $tmp5; ?>" >
 					<div class="game-item-infor">
 			<h6><a href="#"><?php echo $data['name'];?></a></h6>
+			
 			<?php if(!isset ($data['game_modes']['1']['slug'])){?>
 			<p class="rate"></i><span><?php echo "<b>Game mode:</b> ".$data['game_modes']['0']['slug']; ?></span></p>  
 			<?php } else {?>
 				
 				<p class="rate"></i><span><?php echo "<b>Game mode:</b> " .$data['game_modes']['0']['slug'].", ".$data['game_modes']['1']['slug'];?></span></p>  <?php }?>
-				
+				<?php } else {?>
+				<?php }?>
 						</div>
 	</div>
 
