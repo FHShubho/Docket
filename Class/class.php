@@ -14,6 +14,7 @@ Class Shout{
     return $result;
   }
   public function insertData($data){
+	  ob_start();
     $name=mysqli_real_escape_string($this->db->link, $data['name']);
     $body= mysqli_real_escape_string($this->db->link, $data['body']);
     date_default_timezone_set('Asia/Dhaka');
@@ -22,7 +23,7 @@ Class Shout{
     $query= "INSERT INTO shout (name, body, time ) VALUES('$name', '$body','$time')";
     $this->db->insert($query);
 
-  //  header("Location:shoutbox.php");
+ //header("Location:../shoutbox.php");
   }
 
 
@@ -46,7 +47,7 @@ Class moviewatching{
     $this->db= new Database();
   }
   public function showAllData(){
-    $query = "SELECT * FROM moviewatching";
+    $query = "SELECT * FROM watching";
     $result = $this->db->select($query);
     return $result;
 
@@ -58,7 +59,7 @@ Class moviewatching{
     $this->db= new Database();
   }
   public function showAllData(){
-    $query = "SELECT * FROM movieplanning";
+    $query = "SELECT * FROM planning";
     $result = $this->db->select($query);
     return $result;
 
@@ -70,7 +71,7 @@ Class moviewatching{
     $this->db= new Database();
   }
   public function showAllData(){
-    $query = "SELECT * FROM moviefinished";
+    $query = "SELECT * FROM finished";
     $result = $this->db->select($query);
     return $result;
 
