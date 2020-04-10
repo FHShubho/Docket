@@ -21,7 +21,7 @@
         viewport.setAttribute('content', 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no');
     }
     </script>
- 
+
 </head>
 <body>
 
@@ -39,7 +39,7 @@
 				    </div>
 					<a href="UserProfile.html"><img class="logo" src="images/logo_1.png" alt="" width="150" height="60"></a>
 				</div>
-				
+
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav flex-child-menu menu-left">
 						<li><a href="Anime.html"><h4>Anime</h4></a></li>
@@ -53,7 +53,7 @@
 						<li><a href="UserProfile.html"><img class="logo" src="images/profile.png" alt="" width="70" height="70" ></a></li>
 					</ul>
 				</div>
-	    </nav>    
+	    </nav>
 </header>
 
 <div class="hero user-hero">
@@ -78,7 +78,7 @@
             <div class="col-md-12">
             <div class="sb-example-3">
                 <div class="search__container" style="margin:15px">
-                <form method="post">    
+                <form method="post">
                     <input type="text" class="search__input" name="this" placeholder="Search for a movie, TV show, games or books that you are looking for"><br>
                     <input type="submit" class="submit" name="button" type="submit" placeholder="search" >
                 </form>
@@ -89,27 +89,27 @@
             </div>
             </div>
 			<div class="flex-wrap-movielist user-fav-list">
-				
+
             <script>
             if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
             }
             </script>
             <!-- game section -->
-						
-						  
-			
-			
+
+
+
+
                <?php
 			   if(isset($_POST['button']) && !empty($_POST['this']))
                     {
-						
+
                         $s=$_POST['this'];
-						
+
 						$temp1="https://api-v3.igdb.com/games?search=";
 						$temp2 = urlencode($s);
 						$temp1 .= $temp2;
-						$temp1 .= "&fields=cover.url,name,rating,game_modes.slug";
+						$temp1 .= "&fields=cover.url,name,game_modes.slug,genres.name";
 
 						$curl = curl_init();
 
@@ -139,55 +139,78 @@
 						  echo "cURL Error #:" . $err;
 						} else {
 							$result =json_decode($response,true);
-							 
+
 							// echo "<pre>";
-							 //print_r ($result);
-							 //echo "<pre>"; 
-						
+							// print_r ($result);
+							 //echo "<pre>";
+
 						}
-					
-						
-					
+
+
+
 						?>
 				<div class="sectionTitle">
                     <h6><a><span>Games</span></a></h6>
                     <svg height="5" width="900">
                         <line x1="0" y1="0" x2="250" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:1"/>
                     </svg>
-                </div> 
-				
-				
+                </div>
+
+
 				<?php	foreach($result as $data){?>
-			<?php if(isset ($data['cover'])&& isset ($data['game_modes'])){?>
+				  <!--image-->
+			<?php if(isset ($data['cover'])&& isset ($data['game_modes'])) {?>
+
 			<?php $tmp4=$data['cover']['url'];
 					$tmp5 = str_replace('thumb', 'cover_small', $tmp4);
-						
+
 					?>
-		       <div class="movie-item-style-2">    
+					  <!--image-->
+		       <div class="movie-item-style-2">
+
 		   <img src="<?php echo $tmp5; ?>" >
 					<div class="game-item-infor">
 			<h6><a href="#"><?php echo $data['name'];?></a></h6>
-			
+
+			<!--game_modes-->
 			<?php if(!isset ($data['game_modes']['1']['slug'])){?>
-			<p class="rate"></i><span><?php echo "<b>Game mode:</b> ".$data['game_modes']['0']['slug']; ?></span></p>  
+
+			<p class="rate"></i><span><?php echo "<b>Game mode:</b> ".$data['game_modes']['0']['slug']; ?></span></p>
+
 			<?php } else {?>
-				
+
 				<p class="rate"></i><span><?php echo "<b>Game mode:</b> " .$data['game_modes']['0']['slug'].", ".$data['game_modes']['1']['slug'];?></span></p>  <?php }?>
-				<?php } else {?>
-				<?php }?>
+
+			<!--game_modes-->
+			<!--game_genre-->
+				  <?php if(isset ($data['genres']['2']['name'])) {?>
+            <p class="rate"></i><span><?php echo "<b>Genre:</b> " .$data['genres']['0']['name'].", ".$data['genres']['1']['name'].", ".$data['genres']['2']['name'];?></span></p>
+
+          <?php } elseif(isset ($data['genres']['1']['name'])) { ?>
+            <p class="rate"></i><span><?php echo "<b>Genre:</b> " .$data['genres']['0']['name'].", ".$data['genres']['1']['name'];?></span></p>
+
+          <?php } else { ?>
+
+            <p class="rate"></i><span><?php echo "<b>Genre:</b> ".$data['genres']['0']['name']; ?></span></p>
+
+        	 <?php }?>
+        <!--game_genre-->
+
+
+
 						</div>
 	</div>
-
+	<?php 	} ?>
 		<?php
 			}
 		?>
-	
+
 		<?php 	} ?>
-		
-				  </div>
-				  
+
+
+
 				   <!-- anime section -->
-				  
+
                 <?php
                     if(isset($_POST['button']) && !empty($_POST['this']))
                     {
@@ -201,21 +224,21 @@
                         $extension = '&type=0&score=0&status=0&p=0&r=0&sm=0&sd=0&sy=0&em=0&ed=0&ey=0&c%5B%5D=a&c%5B%5D=b&c%5B%5D=c&c%5B%5D=f&gx=0';
                         $searchTerm .= $search;
                         $searchTerm .= $extension;
-                        
-                    
+
+
                         $html = file_get_html($searchTerm);
                         //$html = str_get_html($searchTerm);
-                    
+
                         $posters = array();
                         $b=0;
-                        foreach($html->find('img') as $header) 
+                        foreach($html->find('img') as $header)
                         {
                             $posters[] = $header->{'data-src'};
                             $b++;
                             if($b >4)
                             break;
-                        }    
-                        
+                        }
+
                         $b=0;
                         $titles = array();
                         $links = array();
@@ -226,7 +249,7 @@
                             if($b > 3)
                             break;
                         }
-                        
+
                         $b=0;
                         $details = array();
                         foreach($html->find('td[class=borderClass ac bgColor0]') as $header) {
@@ -243,7 +266,7 @@
                             if($b > 7)
                             break;
                         }
-                        $html->clear(); 
+                        $html->clear();
                         unset($html);
                 ?>
                 <div class="sectionTitle">
@@ -251,9 +274,9 @@
                     <svg height="5" width="900">
                         <line x1="0" y1="0" x2="250" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:1"/>
                     </svg>
-                </div> 
+                </div>
 
-                <?php        
+                <?php
                         $control=0;
                         //$Tcount=0;
                         $count1=0;
@@ -261,17 +284,17 @@
                         //print_r($links);
                         //print_r($details);
                         //print_r($details1);
-                        
-                        while($control<4){    
+
+                        while($control<4){
                 ?>
-                               
+
                 <!-- anime -->
-                <div class="movie-item-style-2">           
+                <div class="movie-item-style-2">
 
                     <img data-src="<?php echo $posters[$control+1]?>" alt="" width="70" height="">
 					<div class="mv-item-infor">
                     <h6><a href="<?php
-                    if($control%2 == 0){ 
+                    if($control%2 == 0){
                         $indexT=$count1;
                         $indexE=$count1+1;
                         $indexR=$count1+2;
@@ -284,7 +307,7 @@
                         $indexR=$count2+2;
                         echo "AnimeDetail.php?title=$titles[$control]&templink=$links[$control]&rating=$details1[$indexR]&type=$details1[$indexT]&episodes=$details1[$indexE]";
                     }
-                        
+
                     ?>">
                         <?php echo $titles[$control]?></a></h6>
                         <p class="rate"><i class="ion-android-star"></i><span><?php
@@ -299,12 +322,12 @@
                         <line x1="0" y1="0" x2="150" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:0"/>
                         </svg> -->
                         <p>Type: <?php
-                        if($control%2 == 0){ 
+                        if($control%2 == 0){
                         echo $details[$count1];
                         }
                         else{
                             echo $details1[$count2];
-                        } 
+                        }
                         ?></p>
                         <p>Episodes:<?php
                         if($control%2 == 0){
@@ -319,7 +342,7 @@
 					</div>
                 </div>
 
-                
+
                 <?php
 
                     //$Tcount=$Tcount+4;
@@ -342,11 +365,11 @@
                         $html = file_get_html($searchTerm);
 
                         $covers = array();
-                        foreach($html->find('img[class=bookCover]') as $header) 
+                        foreach($html->find('img[class=bookCover]') as $header)
                         {
                             $covers[] = $header->src;
                         }
-                        
+
                         $titles = array();
                         foreach($html->find('span[itemprop=name]') as $header) {
                             $titles[] = $header->plaintext;
@@ -364,17 +387,17 @@
                     <svg height="5" width="900">
                         <line x1="0" y1="0" x2="250" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:1"/>
                     </svg>
-                </div> 
+                </div>
 
                 <?php
                         $control=0;
                         $Tcount=0;
                         while($control<3 && $control < $totalResult){
-                            
+
                 ?>
-                
+
                 <!-- first book -->
-                <div class="movie-item-style-2">             
+                <div class="movie-item-style-2">
                     <?php
                             $temp=explode("&mdash",$ratings[$control],-1);
                             $temp = preg_replace('/\;+/', '', $temp);
@@ -384,23 +407,23 @@
                             if(strpos($titles[$Tcount], "(") !== false)
                             {
                                 $y=strstr($titles[$Tcount], '(', true);
-                            } 
+                            }
                             else
                             {
                                 $y=$titles[$Tcount];
-                            }                        
-                           
+                            }
+
                         $link = array();
                         foreach($html->find("a[title=$y]") as $header) {
                             $link[] =$header->href;
-                        } 
+                        }
                         $templink= $gd;
                         $templink .= $link[0];
                         //$html2 = file_get_html($templink);
                         //$plot= $html2->find('div[id=description]', 0);
                         //$plot = preg_replace('/more+/', ' ', $plot);
                         $temp3=$Tcount+1;
-                        //$poster = $html2->find('img[id=coverImage]', 0)->src;                        
+                        //$poster = $html2->find('img[id=coverImage]', 0)->src;
                     ?>
 
                     <img data-src="<?php echo $covers[$Tcount]?>" alt="" width="70" height="">
@@ -417,19 +440,19 @@
 					</div>
                 </div>
 
-                
+
                 <?php
 
                     $Tcount=$Tcount+2;
                     $control++;
                     }
-                    $html->clear(); 
+                    $html->clear();
                     unset($html);
                 }
                 ?>
-				
 
 
+				 </div>
                 </div>
 				<!-- </div>
 				</div> -->
@@ -439,20 +462,20 @@
 </div>
 </div>
 
-        
+
 <script>
     function initLazy() {
         const imgDefer = document.getElementsByTagName("img");
         for (let i =  0; i < imgDefer.length; i++) {
             if (imgDefer[i].getAttribute("data-src")) {
                 imgDefer[i].setAttribute("src",imgDefer[i].getAttribute("data-src"));
-            } 
+            }
         }
     }
     window.addEventListener("DOMContentLoaded", function(event) {
         initLazy();
     });
-    
+
 </script>
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
