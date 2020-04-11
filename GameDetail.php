@@ -259,7 +259,7 @@ if (isset($_GET['id'])) {
 </div>
 
 
-										<h3>Related Review Blogs</h3>
+									<!--	<h3>Related Review Blogs</h3>
 										<svg height="10" width="500">
 											<line x1="0" y1="0" x2="250" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:1"/>
 										</svg>
@@ -272,7 +272,7 @@ if (isset($_GET['id'])) {
 												<p>I've waited for this particular story for what feels like ages, and words cannot even describe for how grateful I am that it finally exists in my hands. Harry Potter and the Cursed Child continues the wondrous magical world that we all know and love.
 													The story starts out at King's Cross with the original trio preparing their school-age children to board the train to start their first year at Hogwarts School of Witchcraft and Wizardry...</p>
 											</div>
-										</div>
+										</div>-->
 
 </div>
 
