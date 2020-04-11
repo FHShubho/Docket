@@ -8801,11 +8801,11 @@ footer.full-width-ft .ft-copyright {
 }
 
 .form1{
-  
+
   position: fixed;
   right: 250px;
   bottom: 100px;
-  top:25px; 
+  top:25px;
   height: fit-content;
 }
 
@@ -8960,7 +8960,7 @@ footer.full-width-ft .ft-copyright {
   display:block;
 width: auto;
   margin-top: 50px;
- 
+
 }
 .wrapper{
 width: 500px;
@@ -9060,7 +9060,7 @@ padding-bottom: 0px;
   margin-top: 20px;
   margin-left:600px;
   padding: 10px;
-  
+
 }
 .pagination a{
   background:#c6d5e4 none repeat scroll 0 0;
@@ -9069,7 +9069,7 @@ padding-bottom: 0px;
   margin-left: 2px;
   padding: 2px 10px;
   text-decoration: none;
-  
+
 
 
 }
@@ -9083,4 +9083,15 @@ color:#fff;}
 }
 .blog-it-infor span{
 	color:#abb7c4;
+}
+.iframe{
+  float: left;
+  margin-top: 200px;
+}
+.slider{
+  display: inline-block;
+  float:right;
+  width:500;
+margin-right: 10px;
+  margin-bottom: 150px;
 }
