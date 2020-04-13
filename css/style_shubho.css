@@ -5600,7 +5600,12 @@ ul {
   height: 445px;
 }
 .hero .hero-ct {
-  padding-top: 170px;
+  padding-top: 120px;
+  /* padding-left: 130px; */
+  /* padding-right: 600px; */
+  margin-left: 130px;
+  /* float: right; */
+  
 }
 
 .hero .hero-ctFriends {
@@ -5615,6 +5620,7 @@ ul {
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .hero .hero-ctFriends h1 {
@@ -5686,7 +5692,7 @@ ul {
 }
 
 .user-hero .hero-ct {
-  padding-top: 225px;
+  padding-top: 200px;
 }
 .user-hero .hero-ct h1 {
   margin-left: -120px;
@@ -8506,7 +8512,7 @@ footer.full-width-ft .ft-copyright {
 }
 
 .book-single {
-  width: 350px;;
+  width: 350px;
 }
 
 /* Rating */
@@ -8668,3 +8674,109 @@ footer.full-width-ft .ft-copyright {
   /* height: 10px; */
 }
 
+.search_container{
+  background-color: rgba(212, 206, 206, 0.884);
+  padding: 15px;
+  margin-top: 0px;
+  margin-left: 20%;
+  margin-bottom: 70px;
+  width: 100%;
+}
+
+/* .search_container .submit{
+  font-family: 'Dosis', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #dd003f;
+  width: 25%;
+  display: block;
+  margin: 0 auto;
+} */
+
+.search_container .submit{
+  display: inline-block;
+  content: "Search";
+  padding: 5px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  margin-left: 45%;
+}
+
+.search_container .submit:hover{
+  background-color: #3e8e41;
+  content: "Search";
+}
+
+.search_container .submit:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  content: "Search";
+}
+
+.hero-ctSearch {
+  padding-top: 170px;
+  text-align: center;
+}
+
+.hero-ctSearch h1 {
+  font-family: 'Dosis', sans-serif;
+  font-size: 50px;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  
+}
+
+.search_db {
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+form.search_db input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #fdfafa;
+  /* border-radius: 10px; */
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 45px;
+}
+
+form.search_db button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: rgb(24, 85, 136);
+  color: white;
+  font-size: 15px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+form.search_db button:hover {
+  background: #356d9b;
+}
+
+form.search_db::after {
+  content: "";
+  clear: both;
+  display: table;
+}
