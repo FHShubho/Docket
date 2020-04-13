@@ -3,7 +3,8 @@
 
 <head>
 	<title>Friends</title>
-
+    <link rel='icon' href='favicon.png' type='image/x-icon'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
 	<link rel="stylesheet" href="css/plugins.css">
 	<link rel="stylesheet" href="css/style_shubho.css">
@@ -35,18 +36,18 @@
 				
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav flex-child-menu menu-left">
-						<li><a href="Anime.html"><h4>Anime</h4></a></li>
+						<li><a href="Anime.php"><h4>Anime</h4></a></li>
 						<li><a href="movie.html"><h4> Movies </h4></a></li>
 						<li><a href="TvSeries.html"><h4> Tv-Series </h4></a></li>
 						<li><a href="games.html"><h4> Games </h4></a></li>
-						<li><a href="Books.html"><h4> Books </h4></a></li>
+						<li><a href="Books.php"><h4> Books </h4></a></li>
 						<li><a href="blogList.html"><h4>Blogs </h4></a></li>
 					</ul>
 
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-                        <li><a href="searchUI.html"><img class="logo" src="images/search.png" alt="" width="50" height="50"></a></li>
+                        <li><a href="search.php"><img class="logo" src="images/search.png" alt="" width="50" height="50"></a></li>
                         <div class="" title="Go to Profile">
-                        <li><a href="UserProfile.html"><img class="logo" src="images/profile.png" alt="" width="78" height=""></a></li>
+                        <li><a href="UserProfile.php"><img class="logo" src="images/profile.png" alt="" width="78" height=""></a></li>
                         </div>
 					</ul>
 				</div>
@@ -65,6 +66,13 @@
 		</div>
     </div>  
 </div>
+
+<!-- search for friend or user -->
+<form class="search_db" action="searchUI.html" style="margin:auto;max-width:300px">
+    <input type="text" placeholder="Search for a Friend or User" name="searchUser">
+    <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
 
 <div class="buster-light">
     <div class="page-single">
@@ -167,7 +175,17 @@
     </div>
 </div>
 
-
+<script>
+    for(var els = document.getElementsByTagName('a'), i = els.length; i--;){
+    var href = els[i].href;
+    els[i].href = 'javascript:void(0);';
+    els[i].onclick = (function(el, href){
+        return function(){
+            window.location.href = href;
+        };
+    })(els[i], href);
+}
+</script>
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>
