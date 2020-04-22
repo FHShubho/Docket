@@ -1,0 +1,163 @@
+
+
+
+
+<!DOCTYPE html>
+
+<head>
+	<title>Search</title>
+
+    <link rel='icon' href='favicon.png' type='image/x-icon'/>
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+    <!-- <meta name=viewport content="width=device-width, initial-scale=1"> -->
+	<link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/style_search.css">
+    <script>
+    var viewMode = getCookie("view-mode");
+    if(viewMode == "desktop")
+    {
+        viewport.setAttribute('content', 'width=1024');
+    }
+    else if (viewMode == "mobile"){
+        viewport.setAttribute('content', 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no');
+    }
+    </script>
+
+</head>
+<body>
+
+<header class="ht-header">
+	<div class="container">
+		<nav class="navbar navbar-default navbar-custom">
+				<div class="navbar-header logo">
+				    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					    <span class="sr-only"></span>
+					    <div id="nav-icon1">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+				    </div>
+					<a href="UserProfile.html"><img class="logo" src="images/logo_1.png" alt="" width="150" height="60"></a>
+				</div>
+
+				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li><a href="Anime.html"><h4>Anime</h4></a></li>
+						<li><a href="movie.html"><h4> Movies </h4></a></li>
+						<li><a href="tvseries.html"><h4> Tv-Series </h4></a></li>
+						<li><a href="games.html"><h4> Games </h4></a></li>
+						<li><a href="books.html"><h4> Books </h4></a></li>
+						<li><a href="blogList.html"><h4> Blogs </h4></a></li>
+					</ul>
+					<ul class="nav navbar-nav flex-child-menu menu-right">
+						<li><a href="UserProfile.html"><img class="logo" src="images/profile.png" alt="" width="70" height="70" ></a></li>
+					</ul>
+				</div>
+        </nav>
+    </div>    
+</header>
+
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+                    <h1>Search</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="buster-light">
+    <div class="page-single">
+	    <div  class="container">
+		    <div class="row ipad-width">
+			    <div class="search col-sm-12 col-xs-12">
+			        <div class="form-style-1 user-pro">
+          	            <div class="row">
+                            <div class="col-md-12">
+                                <div class="sb-example-3">
+                                    <div class="search__container" style="margin:15px">
+                                       
+                                            <input type="text" class="search__input" name="this" id="search" placeholder="Search for a movie, TV show, games or books that you are looking for"><br>
+                                                 <input type="submit" class="submit" name="button" id="search_btn" type="submit" placeholder="search" >
+                                       
+                                    </div>
+          	                   </div>
+                    	    </div>
+                       </div>
+                   </div>
+
+                  <div class="flex-wrap-movielist user-fav-list">
+               
+
+                    <div id="result-count">
+            
+                    </div>
+                    <div id="movie-item-style-2">
+           
+        
+                     </div>
+
+				
+			    </div>
+		   </div>
+	  </div>
+    </div>
+</div>
+<script>
+        //Initial Values
+        const API_KEY = "f74b4228d948c4c7ff17069e37e1dbca";
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`;
+        const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+
+        async function fetchAndRender(search_key) {
+            
+            try {
+
+                let html = "";
+
+                const res = await fetch(`${url}&query=${search_key}`);
+                const movies = await res.json();
+
+                console.log(movies);
+
+               // document.getElementById("result-count").innerHTML = `<h1>${movies.total_results} Results Found</h1>`;
+
+                movies.results.forEach(movie => {
+                    if(movie.poster_path){
+                    html += `
+                        <div class="movie-item-style-2">
+                            <img src="${IMAGE_URL}${movie.poster_path}" alt="" width="70" height="" />
+                            
+                            <div>
+                                <h6>${movie.title} (${movie.release_date})</h6>
+                                <p><span><b>Rating:</b> ${movie.vote_average}/10</span></p>
+                                <p>${movie.overview}</p>
+                            </div>
+                        </div>
+                    `;
+                    }
+                });
+
+                document.getElementById("movie-item-style-2").innerHTML = html;
+                
+            } catch (err) {
+                console.log(err);
+            }
+        }        
+
+        document.getElementById("search_btn").addEventListener("click", () => fetchAndRender(document.getElementById("search").value));
+
+    </script>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/plugins2.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

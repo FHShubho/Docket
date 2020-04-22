@@ -1,118 +1,76 @@
+  
+<!DOCTYPE html>
+
 <head>
-
-    <title>Docket</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <link rel="profile" href="#">
-
+	<title>Blog Create</title>
 
     <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
-
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <meta name="format-detection" content="telephone-no">
-
-    <link rel="stylesheet" href="css/plugins.css">
-    <link rel="stylesheet" href="css/style_subir.css">
-
+	<link rel="stylesheet" href="css/plugins.css">
+	<link rel="stylesheet" href="css/style_subir.css">
 </head>
-
 <body>
-    <!--preloading-->
-    <div id="preloader">
-        <img class="logo" src="images/logo_1.png" alt="" width="119" height="58">
-        <div id="status">
-            <span></span>
-            <span></span>
-        </div>
+
+<div id="preloader">
+    <img class="logo" src="images/logo_1.png" alt="Center" >
+    <div id="status">
+        <span></span>
+        <span></span>
     </div>
-    <!--end of preloading-->
+</div>
 
 
-    <!-- BEGIN | Header -->
-    <header class="ht-header">
-        <div class="container">
-            <nav class="navbar navbar-default navbar-custom">
+<header class="ht-header">
+	<div class="container">
+		<nav class="navbar navbar-default navbar-custom">
+				<div class="navbar-header logo">
+				    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					    <span class="sr-only">Toggle navigation</span>
+					    <div id="nav-icon1">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+				    </div>
+					<a href="UserProfile.html"><img class="logo" src="images/logo_1.png" alt="" width="150" height="60"></a>
+					
+				</div>
+				
+				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li><a href="Anime.html"><h4>Anime</h4></a></li>
+						<li><a href="movie.html"><h4> Movies </h4></a></li>
+						<li><a href="tvseries.html"><h4> Tv-Series </h4></a></li>
+						<li><a href="games.html"><h4> Games </h4></a></li>
+						<li><a href="books.html"><h4> Books </h4></a></li>
+						<li><a href="blogList.html"><h4> Blogs </h4></a></li>
+					</ul>
 
-                <div class="navbar-header logo">
-                    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <div id="nav-icon1">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                    <a href="UserProfile.html"><img class="logo" src="images/logo_1.png" alt="" width="119"
-                            height="58"></a>
-                </div>
-                <!-- navlinks collector -->
-                <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav flex-child-menu menu-left">
+					<ul class="nav navbar-nav flex-child-menu menu-right">
+						<li><a href="FriendProfile.html"><img class="logo" src="images/profile.png" alt="" width="70" height="70" ></a></li>
+					</ul>
+				</div>
+	    </nav>    
+</header>
 
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Create your blog here</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-                        <li><a href="Anime.html">
-                                <h4>Anime</h4>
-                            </a></li>
-                        <li><a href="movie.html">
-                                <h4> Movies </h4>
-                            </a></li>
-                        <li><a href="tvseries.html">
-                                <h4> Tv-Series </h4>
-                            </a></li>
-                        <li><a href="games.html">
-                                <h4> Games </h4>
-                            </a></li>
-                        <li><a href="books.html">
-                                <h4> Books </h4>
-                            </a></li>
-                        <li><a href="blogList.html">
-                                <h4> Blogs </h4>
-                            </a></li>
-                    </ul>
-                    <ul class="nav navbar-nav flex-child-menu menu-right">
-                        <li class="dropdown first">
-
-
-                        </li>
-                        <li><a href="UserProfile.html"><img class="logo" src="images/profile.png" alt="" width="70"
-                                    height="70"></a></li>
-
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </nav>
-
-            <!-- Navbar-->
-
-        </div>
-    </header>
-    <!-- END | Header -->
-
-    <div class="hero common-hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="hero-ct">
-                        <h1> create your blog here</h1>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- blog list section-->
-
-    <div class="buster-light">
-        <div class="page-single">
-            <div class="container">
-                <div class="row ipad-width">
-                    <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="user-info">
-
-                            <div class="user-img">
+<div class="buster-light">
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="user-info">
+                <div class="user-img">
                                 <form action="includes/blog.inc.php" enctype="multipart/form-data" method="POST">
                                     <p><input type="file" accept="image/*" name="img_url" id="file"
                                             onchange="loadFile(event)" style="display: none;"></p>
