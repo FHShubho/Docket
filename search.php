@@ -43,15 +43,15 @@
 				
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav flex-child-menu menu-left">
-						<li><a href="Anime.html"><h4>Anime</h4></a></li>
+						<li><a href="Anime.php"><h4>Anime</h4></a></li>
 						<li><a href="movie.html"><h4> Movies </h4></a></li>
-						<li><a href="tvseries.html"><h4> Tv-Series </h4></a></li>
+						<li><a href="TvSeries.php"><h4> Tv-Series </h4></a></li>
 						<li><a href="games.html"><h4> Games </h4></a></li>
-						<li><a href="books.html"><h4> Books </h4></a></li>
+						<li><a href="Books.php"><h4> Books </h4></a></li>
 						<li><a href="blogList.html"><h4> Blogs </h4></a></li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li><a href="UserProfile.html"><img class="logo" src="images/profile.png" alt="" width="70" height="70" ></a></li>
+						<li><a href="UserProfile.php"><img class="logo" src="images/profile.png" alt="" width="70" height="70" ></a></li>
 					</ul>
 				</div>
 	    </nav>    
@@ -154,15 +154,15 @@
                         }
                         $html->clear(); 
                         unset($html);
-                ?>
-                <div class="sectionTitle">
-                    <h6><a><span>Anime</span></a></h6>
-                    <svg height="5" width="900">
-                        <line x1="0" y1="0" x2="250" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:1"/>
-                    </svg>
-                </div> 
+                        ?>
+                        <div class="sectionTitle">
+                            <h6><a><span>Anime</span></a></h6>
+                            <svg height="5" width="900">
+                                <line x1="0" y1="0" x2="250" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:1"/>
+                            </svg>
+                        </div> 
 
-                <?php        
+                        <?php        
                         $control=0;
                         //$Tcount=0;
                         $count1=0;
@@ -172,7 +172,7 @@
                         //print_r($details1);
                         
                         while($control<4){    
-                ?>
+                        ?>
                                
                 <!-- anime -->
                 <div class="movie-item-style-2">           
@@ -230,7 +230,6 @@
 
                 
                 <?php
-
                     //$Tcount=$Tcount+4;
                     $control++;
                     }
@@ -276,10 +275,9 @@
                 </div> 
 
                 <?php
-                        $control=0;
-                        $Tcount=0;
-                        while($control<3 && $control < $totalResult){
-                            
+                    $control=0;
+                    $Tcount=0;
+                    while($control<3 && $control < $totalResult){       
                 ?>
                 
                 <!-- first book -->
@@ -334,10 +332,100 @@
                     }
                     $html->clear(); 
                     unset($html);
-                }
+                //}
                 ?>
 
+                <!-- tv series -->
+                <?php
+                    //$s = 'game of thrones';
+                    $search=$s;
+                    $search = preg_replace('/\s+/', '%20', $search);
+                    $searchTerm='https://www.imdb.com/find?q=';
+                    $extension = '&s=tt&ttype=tv&ref_=fn_tv';
+                    $searchTerm .= $search;
+                    $searchTerm .= $extension;
+        
+                    $html = file_get_html($searchTerm);
 
+                    $b=0;
+                    $titles = array();
+                    foreach($html->find('td[class=result_text]') as $header) {
+                        $titles[] = $header->plaintext;
+                        $b++;
+                        if($b > 3)
+                        break;
+                    }
+
+                    $b=0;
+                    $links = array();
+                    foreach($html->find('td[class=result_text] a') as $header) {
+                        $links[] = $header->href;
+                        $b++;
+                        if($b > 3)
+                        break;
+                    }
+
+                    $b=0;
+                    $posters = array();
+                    foreach($html->find('td[class=primary_photo] img') as $header) {
+
+                        $posters[] = $header->src;
+                        $b++;
+                        if($b > 3)
+                        break;
+                    }
+                ?>
+
+                <div class="sectionTitle">
+                    <h3><a><span>Tv Series/Tv Movies</span></a></h3>
+                    <svg height="5" width="900">
+                        <line x1="0" y1="0" x2="250" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:1"/>
+                    </svg>
+                </div> 
+
+                <?php
+                        $control=0;
+                        $Tcount=0;
+                        while($control<3){
+                ?>
+                
+                <div class="movie-item-style-2">             
+                    <?php
+                            $temp=explode('(',$titles[$control]);
+                            $temp = preg_replace('/\)+/', '', $temp);
+                            //$temp[0] = preg_replace('/avg rating+/', '', $temp[0]);
+                            //$temp[2] = preg_replace('/published+/', '', $temp[2]);                       
+                    ?>
+
+                    <img data-src="<?php echo $posters[$control]?>" alt="" width="70" height="">
+					<div class="mv-item-infor">
+                    <h6><a href="<?php echo "TvSeriesDetail.php?title=$temp[$control]&templink=$links[$control]&type=$temp[2]&year=$temp[1]"?>">
+                        <?php echo $temp[0]?></a></h6>
+                        <!-- <p class="rate"><i class="ion-android-star"></i><span></span> / 5</p> -->
+                        <!-- <svg height="5" width="500">
+                        <line x1="0" y1="0" x2="700" y2="0" style="stroke:rgb(61, 61, 61);stroke-width:1"/>
+                        </svg> -->
+						<p>Type: <?php echo $temp[2]?></p>
+						<p class="run-time">Released: <?php echo $temp[1] ?></p>
+					</div>
+                </div>
+
+                
+                <?php
+                    $control++;
+                    }
+                    $html->clear(); 
+                    unset($html);
+                //}
+                ?>
+
+                
+
+
+
+
+
+                <?php } ?>
                 </div>
 				<!-- </div>
 				</div> -->
