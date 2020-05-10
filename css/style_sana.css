@@ -5406,7 +5406,8 @@ ul {
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: flex-start;
 }
 @media (max-width: 767px) {
   .blog-detail-ct .flex-it {
@@ -6446,7 +6447,7 @@ ul {
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   background: #dd003f;
   width: 100%;
 }
@@ -6967,7 +6968,7 @@ p.ceb-single {
   font-size: 14px;
   color: #222222;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   width: 100%;
   margin-bottom: 25px;
 }
@@ -6981,7 +6982,7 @@ p.ceb-single {
   font-size: 14px;
   color: #222222;
   font-weight: bold;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   margin-top: 10px;
   height: 42px;
   border: 1px solid #e1e1e1;
@@ -8791,13 +8792,14 @@ footer.full-width-ft .ft-copyright {
   margin-left: 100px;
   margin-right: 5px;
   text-align: left;
-  position: fixed;
+  position: static;
 }
 
 .loginContainer{
   position: relative;
   text-align: center;
   color: transparent;
+  text-transform: none;
 }
 
 .form1{
@@ -8822,7 +8824,7 @@ footer.full-width-ft .ft-copyright {
   font-size: 36px;
   color: #222222;
   font-weight: 700;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-bottom: 45px;
   text-align: center;
 }
@@ -8857,7 +8859,7 @@ footer.full-width-ft .ft-copyright {
   font-size: 14px;
   color: #222222;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   width: 100%;
   margin-bottom: 25px;
 }
@@ -8956,3 +8958,109 @@ footer.full-width-ft .ft-copyright {
 background-color: #0f2133;
 }
   
+.search_container{
+  background-color: rgba(212, 206, 206, 0.884);
+  padding: 15px;
+  margin-top: 0px;
+  margin-left: 20%;
+  margin-bottom: 70px;
+  width: 100%;
+}
+
+/* .search_container .submit{
+  font-family: 'Dosis', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #dd003f;
+  width: 25%;
+  display: block;
+  margin: 0 auto;
+} */
+
+.search_container .submit{
+  display: inline-block;
+  content: "Search";
+  padding: 5px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  margin-left: 45%;
+}
+
+.search_container .submit:hover{
+  background-color: #3e8e41;
+  content: "Search";
+}
+
+.search_container .submit:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  content: "Search";
+}
+
+.hero-ctSearch {
+  padding-top: 170px;
+  text-align: center;
+}
+
+.hero-ctSearch h1 {
+  font-family: 'Dosis', sans-serif;
+  font-size: 50px;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  
+}
+
+.search_blog {
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+form.search_blog input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #fdfafa;
+  /* border-radius: 10px; */
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 45px;
+}
+
+form.search_blog button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: rgb(24, 85, 136);
+  color: white;
+  font-size: 15px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+form.search_blog button:hover {
+  background: #356d9b;
+}
+
+form.search_blog::after {
+  content: "";
+  clear: both;
+  display: table;
+}
