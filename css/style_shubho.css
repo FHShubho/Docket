@@ -4472,15 +4472,16 @@ ul {
 .movie-items .slick-multiItem .slick-dots,
 .movie-items .slick-multiItem2 .slick-dots {
   position: absolute;
-  margin-left: 50%;
+  margin: 0px;
+  /* margin-left: 50%; */
   text-align: right;
   right: 15px;
   width: 50%;
   position: inherit;
-  margin-bottom: 60px;
-  margin-top: -55px;
+  /* margin-bottom: 60px;
+  margin-top: -55px; */
 }
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .movie-items .slick-multiItem .slick-dots,
   .movie-items .slick-multiItem2 .slick-dots {
     width: 100%;
@@ -4488,7 +4489,7 @@ ul {
     margin-top: 0;
     text-align: left;
   }
-}
+} */
 .movie-items .slick-slider {
   margin-left: 15px;
 }
