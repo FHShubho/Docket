@@ -1,8 +1,7 @@
  
 <?php
-  session_start();//intializing session
-  
-  // connecting to database
+  session_start(); //intializing session
+  //connecting to database
 	$con=mysqli_connect("localhost","digibd_docket","docket","digibd_docket");
 	//$con=mysqli_connect("localhost","root","","docket");
 	if($con===false)
@@ -12,29 +11,25 @@
     //echo " aisa porsi mama";
     
     // rececving infromation to update the database
-    $episodesSeen=$_POST['episodesSeen'];
+    $myRating=$_POST['myRating'];
     $title=$_SESSION['title'];
     $db=$_SESSION['db'];;
     // $rating = $_SESSION['rating'];
     // $type = $_SESSION['type'];
-    $episodes = $_SESSION['episodes'];
+    // $episodes = $_SESSION['episodes'];
     // $templink = $_SESSION['templink'];
+
+    //echo $episodesSeen;
+    //echo $inList;
     
-   
+    //updating rating to existing entry
     $sql ="SELECT * FROM {$db} WHERE title = '$title' ";
     $query_run = mysqli_query($con,$sql);
-     
-    //updating episode info for existing title
+    
     if (mysqli_num_rows($query_run) > 0) {
-        
-        if($episodesSeen == $episodes) // moving it to finished list when all the episodes have been watched
-        {
-            $query = "UPDATE {$db} SET episodesSeen = '$episodesSeen', inList = 'Finished' WHERE title = '$title' "; 
-        }
-        else{
-            $query = "UPDATE {$db} SET episodesSeen = '$episodesSeen' WHERE title = '$title' "; 
-        }
-
+            
+        $query = "UPDATE {$db} SET myRating = '$myRating' WHERE title = '$title' "; 
+      
         //ressponse back to alert update
         if(mysqli_query($con,$query)){
           echo '1'; // database updated successfully 
@@ -45,6 +40,8 @@
     }
     else
     {
-        echo '3'; // user has not added it to a list yet
+      echo '3'; // this title is not in the databse
+        
     }
+
 ?>
