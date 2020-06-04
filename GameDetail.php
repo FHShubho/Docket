@@ -1,4 +1,11 @@
+<?php
+$con=mysqli_connect("localhost","root","","shoutbox");
 
+if($con===false)
+{
+  echo '<script type= "text/javascript"> alert ("Database Could not connect")</script>';
+}
+?>
 <!DOCTYPE html>
 
 <head>
@@ -157,22 +164,61 @@ if (isset($_GET['id'])) {
 							<p class="radioContainer"></i><span><?php echo "<br><b>Genre:</b> ".$data['genres']['0']['name']; ?></span></p>
 
 						 <?php }?>
+						
 						<!---	<label class="radioContainer"><p>Genre:  shooter,strategy</p></label>-->
-					<br><br>	My Rating <img src="images/rating.png" width="25px"> <span><input type="number" id="" name="" value="8" min="0" max="10"></span> /10 <input type="submit" class="button" value="Update"> <br>
+					<br><br>	My Rating <img src="images/rating.png" width="25px"> <span>
+					 <form action="" method="post">
+					<input type="number"  name="ratings"  min="0" max="10"></span> /10  <br>
 						Add to:&nbsp;
+						<!--<form action="GameDetail.php" method="post">
 						<label class="radioContainer"> Plan to Play &nbsp;
-							<input type="radio" checked="checked" name="radio">
+							<input type="radio" checked="checked" name="radio" value="planning">
 							<span class="checkmark"></span>
 						</label>
 						<label class="radioContainer"> Playing &nbsp;
-							<input type="radio" name="radio">
+							<input type="radio" name="radio" value="playing">
 							<span class="checkmark"></span>
 						</label>
 						<label class="radioContainer"> Finished&nbsp;
-							<input type="radio" name="radio">
+							<input type="radio" name="radio" value="finished">
 							<span class="checkmark"></span>
 						</label>
-						<input type="submit" class="button" value="Update"> <br>
+						<input type="submit" name="submit" class="button"> <br>
+						</form>-->
+						
+						<input type="radio" name="radio" value="planning">Plan to Play
+						<input type="radio" name="radio" value="playing">Playing
+						<input type="radio" name="radio" value="finished">Finished
+						<input type="submit" name="submit"  />
+						</form>
+						
+						<?php
+						$gid=$data['id'];
+						$gname=$data['name'];
+						$rating=$_POST['ratings'];
+						if(isset($_POST['submit'])){
+							if($_POST['radio']=="finished")
+								{
+									$query= "INSERT INTO gamesfinished (id , name , ratings , images) 
+							  VALUES ( '$gid', '$gname' , '$rating', '$tmp4'  )";
+								}
+								
+							else if($_POST['radio']=="playing")
+								{
+									$query= "INSERT INTO gamesplanning (id , name , ratings , images) 
+							  VALUES ( '$gid', '$gname' , '$rating', '$tmp4'  )";
+								}
+							else
+							{
+									$query= "INSERT INTO gamesfinished (id , name , ratings , images) 
+							  VALUES ( '$gid', '$gname' , '$rating', '$tmp4'  )";
+								}
+								
+								}
+						
+						?>
+						
+						
 
 						In Collection &nbsp;
 						<div class="cswitch">
@@ -287,6 +333,15 @@ if (isset($_GET['id'])) {
 	}
 ?>
 
+<?php
+if (mysqli_query($con, $query)) {
+							  echo "New record created successfully";
+							} else {
+							  echo "Error: " . $query . "<br>" . mysqli_error($con);
+							}
+
+							mysqli_close($con);
+?>
 
 
 <script>
