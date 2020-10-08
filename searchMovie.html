@@ -130,10 +130,10 @@
                     if(movie.poster_path){
                     html += `
                         <div class="movie-item-style-2">
-                            <img src="${IMAGE_URL}${movie.poster_path}" alt="" width="70" height="" />
+                           <a href="MovieDetail.html"><img src="${IMAGE_URL}${movie.poster_path}" alt="" width="70" height="" /></a>
                             
                             <div>
-                                <h6>${movie.title} (${movie.release_date})</h6>
+                                <a href="MovieDetail.html"><h6>${movie.title} (${movie.release_date})</h6></a>
                                 <p><span><b>Rating:</b> ${movie.vote_average}/10</span></p>
                                 <p>${movie.overview}</p>
                             </div>
